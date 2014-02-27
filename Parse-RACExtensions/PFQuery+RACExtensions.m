@@ -37,6 +37,9 @@
 		[self findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 			if (self.cachePolicy == kPFCachePolicyCacheThenNetwork && ++callbackNumber == 1) {
 				if (error.code == kPFErrorCacheMiss && [error.domain isEqualToString:@"Parse"]) return;
+                
+                PFRACObjectNonCompletionCallback(subscriber)(objects, error);
+                return;
 			}
 
 			PFRACObjectCallback(subscriber)(objects, error);

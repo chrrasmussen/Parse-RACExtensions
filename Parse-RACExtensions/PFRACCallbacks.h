@@ -12,5 +12,6 @@
 @protocol RACSubscriber;
 
 PFBooleanResultBlock PFRACBooleanCallback(id<RACSubscriber> subscriber);
+PFIdResultBlock PFRACObjectNonCompletionCallback(id<RACSubscriber> subscriber);
 PFIdResultBlock PFRACObjectCallback(id<RACSubscriber> subscriber);
 PFIntegerResultBlock PFRACIntegerCallback(id<RACSubscriber> subscriber);

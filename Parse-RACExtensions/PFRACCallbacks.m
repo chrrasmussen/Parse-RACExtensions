@@ -33,6 +33,16 @@ PFBooleanResultBlock PFRACBooleanCallback(id<RACSubscriber> subscriber) {
 	};
 }
 
+PFIdResultBlock PFRACObjectNonCompletionCallback(id<RACSubscriber> subscriber) {
+	return ^(id result, NSError *error) {
+		if (error == nil) {
+			[subscriber sendNext:result];
+		} else {
+			[subscriber sendError:PFRACNormalizeError(error)];
+		}
+	};
+}
+
 PFIdResultBlock PFRACObjectCallback(id<RACSubscriber> subscriber) {
 	return ^(id result, NSError *error) {
 		if (error == nil) {
