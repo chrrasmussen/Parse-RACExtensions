@@ -26,6 +26,7 @@
 
 - (RACSignal *)rac_findObjects {
 	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
+        NSLog(@"[Download] Class:%@", self.parseClassName);
 		// With a cache policy of kPFCachePolicyCacheThenNetwork, the callback
 		// is called twice, first with results from cache, second with fresh
 		// results. When there are no cached results, the API returns an error,
